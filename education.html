@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Pandey - Azure Data Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .active-link {
+            color: #ffffff;
+            font-weight: 600;
+            border-bottom: 2px solid #f5f5f5;
+            padding-bottom: 2px;
+        }
+        .bg-gradient-blue {
+            background: linear-gradient(to right, #6b7280, #374151);
+        }
+        .text-gradient-blue {
+            background: linear-gradient(to right, #4f46e5, #6366f1);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .shadow-lg {
+             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-gradient-blue text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <h1 class="text-3xl font-semibold">Vivek Pandey</h1>
+                <p class="text-lg">Azure Data Engineer</p>
+                <nav class="mt-4 md:mt-0">
+                    <ul class="flex space-x-6">
+                         <li><a href="index.html" class="hover:text-blue-200 no-underline transition-colors duration-300">About</a></li>
+                        <li><a href="experience.html" class="hover:text-blue-200 no-underline transition-colors duration-300">Experience</a></li>
+                        <li><a href="skills.html" class="hover:text-blue-200 no-underline transition-colors duration-300">Skills</a></li>
+                        <li><a href="education.html" class="hover:text-blue-200 no-underline transition-colors duration-300">Education</a></li>
+                         <li><a href="certifications.html" class="hover:text-blue-200 no-underline transition-colors duration-300">Certifications</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-200 no-underline transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <section id="education" class="mb-16">
+            <h2 class="text-3xl font-semibold text-gradient-blue mb-6">Education</h2>
+            <article class="card p-8 rounded-xl shadow-lg transition-transform duration-300 hover:shadow-xl hover:scale-105 border border-gray-100">
+                <h3 class="text-xl font-semibold text-indigo-600 mb-3">IIMT COLLEGE OF ENGINEERING</h3>
+                <p class="text-gray-600 mb-2 font-medium">Bachelor of Technology in Electronics and Communication Engineering</p>
+                <p class="text-gray-600 mb-2">Greater Noida, India</p>
+                <p class="text-gray-600 mb-2">2015 - 2019</p>
+                <p class="text-gray-700">Grade: 71%</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-5 text-center rounded-t-lg shadow-md">
+        <p>&copy; 2025 Vivek Pandey. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get all the navigation links
+        const navLinks = document.querySelectorAll('header nav ul li a');
+
+        // Get all the sections
+        const sections = document.querySelectorAll('main > section');
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
